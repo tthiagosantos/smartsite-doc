@@ -1,0 +1,100 @@
+openapi: 3.0.0
+info:
+  title: API de Alarmes
+  version: 1.0.0
+servers:
+  - url: http://localhost:5050/api
+paths:
+  /alarms/latest-new:
+    get:
+      summary: Recuperar os últimos alarmes
+      parameters:
+        - name: allowedSites
+          in: query
+          required: true
+          description: Lista de IDs de sites permitidos
+          schema:
+            type: array
+            items:
+              type: string
+            example: ["siteId[0]", "siteId[1]"]
+        - name: companyId
+          in: query
+          required: true
+          description: ID da empresa
+          schema:
+            type: string
+            example: "companyId"
+      responses:
+        '200':
+          description: Alarmes recuperados com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    siteId:
+                      type: string
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    information:
+                      type: string
+                    value:
+                      type: string
+                    propertyName:
+                      type: string
+                    propertyValue:
+                      type: string
+                    objectId:
+                      type: string
+                    objectName:
+                      type: string
+                    objectType:
+                      type: string
+                    objectCluster:
+                      type: string
+                    timestamp:
+                      type: string
+                      format: date-time
+              example:
+                - siteId: "string"
+                  name: "string"
+                  description: "string"
+                  information: "string"
+                  value: "string"
+                  propertyName: "string"
+                  propertyValue: "string"
+                  objectId: "string"
+                  objectName: "string"
+                  objectType: "string"
+                  objectCluster: "string"
+                  timestamp: "string"
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autorizado
+      headers:
+        Accept:
+          description: Cabeçalho Accept para o tipo de resposta
+          schema:
+            type: string
+            default: '/'
+        User-Agent:
+          description: User agent que faz a requisição
+          schema:
+            type: string
+            default: 'insomnia/10.3.0'
+        api-key:
+          description: Chave da API para autenticação
+          schema:
+            type: string
+            default: '1cf9a02a-1353-4e2c-8493-208e18273bb7'
+        x-language:
+          description: Idioma da resposta
+          schema:
+            type: string
+            default: 'pt'

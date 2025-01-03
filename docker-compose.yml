@@ -1,0 +1,7 @@
+services:
+  api-docs:
+    build: .
+    container_name: api-docs
+    ports:
+      - "5050:80"
+    restart: always
