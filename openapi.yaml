@@ -3,7 +3,7 @@ info:
   title: API de Alarmes
   version: 1.0.0
 servers:
-  - url: http://localhost:5050/api
+  - url: https://t1-smartsite.padtec.com.br/api
 paths:
   /alarms/latest-new:
     get:
